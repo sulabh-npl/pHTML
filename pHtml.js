@@ -22,8 +22,11 @@ var variables ={};
 var tags = document.getElementsByTagName("*");
 let i=0;
 while(tags[i]!=undefined){
+  var attributes = tags[i].attributes;
+  for(let i=0;i<attributes.length;i++){
+    attributes[i].value = getValue(attributes[i].value);
+  }
   if(tags[i].tagName=='PRINT'){
-    
     if(tags[i].attributes.getNamedItem("name") ==undefined){
       console.log("Mention name of variable to be displayed")
       replaceByNull(tags[i]);
@@ -42,7 +45,7 @@ while(tags[i]!=undefined){
     
     var times =tags[i].attributes.getNamedItem('times');
     if(times!=undefined){
-      times = getValue(times.value);
+      times = times.value;
       if(isNaN(times)){
         console.log("times attribute must be a number");
       }else{
@@ -64,7 +67,7 @@ while(tags[i]!=undefined){
     var varValue =tags[i].attributes.getNamedItem('value');
     const varType = tags[i].attributes.getNamedItem('type');
     if(varName!=undefined || varType!=undefined || varValue!=undefined){
-      varValue = getValue(varValue.value)
+      varValue = varValue.value;
       if(varType.value.toLowerCase() == "number"){
         varValue = parseFloat(varValue);
       }
@@ -81,9 +84,9 @@ while(tags[i]!=undefined){
     const val2Obj =tags[i].attributes.getNamedItem('val2');
     const comparisionObj = tags[i].attributes.getNamedItem('comparision');
     if(val1Obj!=undefined || val2Obj!=undefined || comparisionObj!=undefined){
-      const val1 = getValue(val1Obj.value);
-      const val2 = getValue(val2Obj.value);
-      const comparision = getValue(comparisionObj.value);
+      const val1 = (val1Obj.value);
+      const val2 = (val2Obj.value);
+      const comparision = (comparisionObj.value);
       var yes=true;
       if(comparision=='=' && val1==val2){}
       else if(comparision=='<' && val1 <val2){}
@@ -125,10 +128,10 @@ while(tags[i]!=undefined){
     const actionObj = tags[i].attributes.getNamedItem('action');
     const nameObj = tags[i].attributes.getNamedItem('name');
     if(val1Obj!=undefined || val2Obj!=undefined || actionObj!=undefined||nameObj!=undefined){
-      const val1 = parseFloat(getValue(val1Obj.value));
-      const val2 = parseFloat(getValue(val2Obj.value));
-      const action = getValue(actionObj.value);
-      const name = getValue(nameObj.value);
+      const val1 = parseFloat((val1Obj.value));
+      const val2 = parseFloat((val2Obj.value));
+      const action = (actionObj.value);
+      const name = (nameObj.value);
       var variable = variables[name];
       if(variable.type=='number'){
         var val;
