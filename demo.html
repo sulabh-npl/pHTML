@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Demo</title>
+    <!-- Insert Script Tag from documentation here -->
+</head>
+<body>
+    <!-- <var>,<perform>,<perform>,<print> tags are both standalone and container tags so closing can be done but is not mandatory -->
+    <var name="var1" value="5" type="number">
+    <var name="var2" value="0" type="number">
+    <repeat times="10">
+        <if val1="@var1" comparision="=" val2="0"><break></break></if>
+        <h1>Hello World <print name="var1"></h1>
+        <var name="var3" value="0" type="number">
+        <repeat times="5">
+            <p>
+                Total coount
+                <perform name="var2" val1="@var2" action="+" val2="1">
+                <print name="var2">
+            </p>
+            <p>
+                Loop Internal Count
+                <perform name="var3" val1="@var3" action="+" val2="1">
+                <print name="var3">
+            </p>
+            <hr>
+        </repeat>
+        <perform name="var1" val1="@var1" action="-" val2="1">
+    </repeat>
+</body>
+<script src="./v2.js"></script>
+</html>
