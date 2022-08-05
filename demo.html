@@ -9,8 +9,10 @@
     <var name="var1" value="5" type="number">
     <var name="var2" value="0" type="number">
     <repeat times="10">
-        <if val1="@var1" comparision="=" val2="0"><break></break></if>
-        <h1>Hello World <print name="var1"></h1>
+        <if val1="@var1" comparision="=" val2="0"><break></break>
+        <else><print name="var1"></print></else>
+        </if>
+        <h1>Hello World</h1>
         <var name="var3" value="0" type="number">
         <repeat times="5">
             <p>
